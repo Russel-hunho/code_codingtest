@@ -1,0 +1,34 @@
+import sys
+input = sys.stdin.readline
+N,M = map(int,input().split())
+ladder = dict()
+snake = dict()
+for _ in range(N):
+    x,y = map(int,input().split())
+    ladder[x] = y
+for _ in range(M):
+    u,v = map(int,input().split())
+    snake[u] = v
+
+visited = [False]*101 # 0~100, 0은 더미
+visited[1] = True # 1에서 시작
+from collections import deque
+bfs = deque([[1,0]]) # 위치,횟수
+while bfs:
+    a = bfs.popleft()
+    depth = a[1]
+    state = a[0]
+    for i in range(1,7):
+        x = state + i
+        if x > 100:
+            continue
+        if x in snake.keys():
+            x = snake[x]
+        elif x in ladder.keys():
+            x = ladder[x]
+        if x == 100:
+            print(depth+1)
+            exit(0)
+        if visited[x] == False:
+            visited[x] = True
+            bfs.append([x,depth+1])
