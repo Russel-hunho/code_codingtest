@@ -35,7 +35,11 @@ LIMIT N;
 -- 모든 구문의 맨 마지막!
 
 
--- 구문 순서
+-- https://velog.io/@ygh7687/SQL-%EB%AC%B8%EB%B2%95-%EC%A0%95%EB%A6%AC
+-- 구문 문법 순서:
+SELECT -> FROM -> WHERE -> GROUP BY -> HAVING -> ORDER BY
+-- 실행 순서:
+FROM -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY
 SELECT A, COUNT(*), AVG(B+C) AS D
 FROM AA
 
